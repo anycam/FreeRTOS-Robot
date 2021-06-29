@@ -6,6 +6,7 @@ FLORES LARA SERGIO
 MORENO HERNANDEZ JOSE ANTONIO
 CRUZ TORRES LUIS FERNANDO
 
+Profesor: Ocampo Alvarez Arturo
 F.E.S. ARAGON - UNAM
 */
 #include <string.h>
