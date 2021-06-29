@@ -1,72 +1,41 @@
 
-# TCP Server example
+# FreeRTOS robot control with TCP Server and battery management.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+Basic example using FreeRTOS as main RTOS for multiple task management in order to controll the robot and get an indicator LED of the battery status, using a 32bit microcontroller ESP32.
 
-The application creates a TCP socket with the specified port number and waits for a connection request from the client. After accepting a request from the client, connection between server and client is established and the application waits for some data to be received from the client. Received data are printed as ASCII text and retransmitted back to the client.
+![](https://github.com/anycam/FreeRTOS-Robot/blob/master/Images/PCB.png)
+![](https://github.com/anycam/FreeRTOS-Robot/blob/master/Images/Block.png)
 
-## How to use example
+## Install ESP-IDF environment
+[Follow the steps clicking here.](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
 
-In order to create TCP client that communicates with TCP server example, choose one of the following options.
+## How to compile and use example on linux with ESPRESSIF ESP-IDF environment
+-Open a terminal in your project directory example -> "~/esp/tcpbat"
+-Once you are located on your terminal in the project directory, start the idf global path with the next command -> ". $HOME/esp/esp-idf/export.sh"
+-Set the target and open the menu config in order to configure your WIFI conection name and password -> "idf.py set-target esp32" and "idf.py menuconfig"
+-We are almost done! Now build your project (rub your hands together for luck) and enter -> "idf.py build"
+-If everything is ok, we are ready to upload our code into the target by writing -> "idf.py -p /dev/ttyUSB0 -b 460800 flash" What does this means? Ok its easy, first -p indicates the port, if you don't know your ESP32 port enter "ls /dev/tty*" to see the PORT where your ESP32 is connected by plugin and unplugin your board, -b indicates de baud rate but almost all the ESP32 boards supports 460800 which is just fine for us and quick, finally flash tells what it is, FLASH IT!
 
-There are many host-side tools which can be used to interact with the UDP/TCP server/client. 
-One command line tool is [netcat](http://netcat.sourceforge.net) which can send and receive many kinds of packets. 
-Note: please replace `192.168.0.167 3333` with desired IPV4/IPV6 address (displayed in monitor console) and port number in the following command.
+That's it, you should be able to see the percentage of the uploading process until the 100%
 
-In addition to those tools, simple Python scripts can be found under sockets/scripts directory. Every script is designed to interact with one of the examples.
-
-### TCP client using netcat
+### See the information at the serial monitor
 ```
-nc 192.168.0.167 3333
-```
-
-### Python scripts
-Script example_test.py could be used as a counter part to the tcp-server application,
-IP address and the message to be send to the server shall be stated as arguments. Example:
-
-```
-python example_test.py 192.168.0.167 Message
-```
-Note that this script is used in automated tests, as well, so the IDF test framework packages need to be imported;
-please add `$IDF_PATH/tools/ci/python_packages` to `PYTHONPATH`.
-
-## Hardware Required
-
-This example can be run on any commonly available ESP32 development board.
-
-## Configure the project
-
-```
-idf.py menuconfig
+Open the serial monitor of your choice and select your port with 115200 as baud rate for communication.
+You should be able to see you IP and PORT for the conection and battery or power status.
 ```
 
-Set following parameters under Example Configuration Options:
-
-* Set `IP version` of the example to be IPV4 or IPV6.
-
-* Set `Port` number of the socket, that server example will create.
-
-* Set `TCP keep-alive idle time(s)` value of TCP keep alive idle time. This time is the time between the last data transmission.
-
-* Set `TCP keep-alive interval time(s)` value of TCP keep alive interval time. This time is the interval time of keepalive probe packets.
-
-* Set `TCP keep-alive packet retry send counts` value of TCP keep alive packet retry send counts. This is the number of retries of the keepalive probe packet.
-
-Configure Wi-Fi or Ethernet under "Example Connection Configuration" menu. See "Establishing Wi-Fi or Ethernet Connection" section in [examples/protocols/README.md](../../README.md) for more details.
-
-## Build and Flash
-
-Build the project and flash it to the board, then run monitor tool to view serial output:
+### Running the app with TCP client using TCP tools
 
 ```
-idf.py -p PORT flash monitor
+Open TCP tools on your smartphone, select TCP client and enter the server IP and Port.
+Then you can type "a,1" and hit enter to see how the motors moves forward, feel free to execute the commands 
+of the main app.
 ```
+### What to see?
+```
+By sending the commands to move, you can see your motors moving or your LED's blinking in the same order you typed.
+Also the LED attached to the GPIO27 will be blinking slowly if the battery percentage is more than 50%, toherwise it will 
+starts to blink faster (yeah, this battery monitor should be better) but it is a good way to test and create Tasks in the FreeRTOS.
 
-(To exit the serial monitor, type ``Ctrl-]``.)
-
-See the Getting Started Guide for full steps to configure and use ESP-IDF to build projects.
-
-
-## Troubleshooting
-
-Start server first, to receive data sent from the client (application).
+Feel free to modify and share anything here.
+```
