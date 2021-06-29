@@ -10,10 +10,11 @@ Basic example using FreeRTOS as main RTOS for multiple task management in order 
 [Follow the steps clicking here.](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
 
 ## How to compile and use example on linux with ESPRESSIF ESP-IDF environment
--Open a terminal in your project directory example -> "~/esp/tcpbat"
--Once you are located on your terminal in the project directory, start the idf global path with the next command -> ". $HOME/esp/esp-idf/export.sh"
--Set the target and open the menu config in order to configure your WIFI conection name and password -> "idf.py set-target esp32" and "idf.py menuconfig"
--We are almost done! Now build your project (rub your hands together for luck) and enter -> "idf.py build"
+
+-Open a terminal in your project directory example -> "~/esp/tcpbat" \
+-Once you are located on your terminal in the project directory, start the idf global path with the next command -> ". $HOME/esp/esp-idf/export.sh"\
+-Set the target and open the menu config in order to configure your WIFI conection name and password -> "idf.py set-target esp32" and "idf.py menuconfig"\
+-We are almost done! Now build your project (rub your hands together for luck) and enter -> "idf.py build"\
 -If everything is ok, we are ready to upload our code into the target by writing -> "idf.py -p /dev/ttyUSB0 -b 460800 flash" What does this means? Ok its easy, first -p indicates the port, if you don't know your ESP32 port enter "ls /dev/tty*" to see the PORT where your ESP32 is connected by plugin and unplugin your board, -b indicates de baud rate but almost all the ESP32 boards supports 460800 which is just fine for us and quick, finally flash tells what it is, FLASH IT!
 
 That's it, you should be able to see the percentage of the uploading process until the 100%
