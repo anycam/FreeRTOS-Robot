@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/andrecam/esp/tcpbat/build/CMakeFiles/bootloader
+/home/andrecam/esp/tcpbat/build/CMakeFiles/bootloader.rule
+/home/andrecam/esp/tcpbat/build/CMakeFiles/bootloader-complete.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/andrecam/esp/tcpbat/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
